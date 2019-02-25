@@ -1,0 +1,12 @@
+{
+    "name": "sample rest api",
+    "version": "1.0.0",
+    "description": "this is a first attempt at building a REST api",
+    "main": "app.js",
+    "author": {
+        "name": "richu shaji abraham"
+    },
+    "dependencies": {
+        "express": "^4.16.4"
+    }
+}
