@@ -4,26 +4,41 @@ function addUser(key, usersDetails){
 }
 
 var usersDetails = [{
-    name      : "tittu",
-    toDoList : ["dance","run"],
-    apiCalls  : 0
+    "name"      : "tittu",
+    "toDoList" : ["dance","run"],
+    "apiCalls"    : {
+        "getlist"       :0,
+        "addTask"       :0,
+        "taskCompleted" :0,
+        "totalApiCalls" :0
+    }
     },
 {
-    name        : "richu",
-    toDoList    : [],
-    apiCalls    : 0
+    "name"        : "richu",
+    "toDoList"    : [],
+    "apiCalls"    : {
+        "getlist"       :0,
+        "addTask"       :0,
+        "taskCompleted" :0,
+        "totalApiCalls" :0
+    }
     },
 {
-    name        : "sachu",
-    toDoList    : [],
-    apiCalls    : []
+    "name"        : "sachu",
+    "toDoList"    : [],
+    "apiCalls"    : {
+        "getToDolist"   :0,
+        "addTask"       :0,
+        "taskCompleted" :0,
+        "totalApiCalls" :0
+    }
     }];
 addUser("tittukey",usersDetails[0]);
 addUser("richukey",usersDetails[1]);
 addUser("sachukey",usersDetails[2]);
 function addTask(key,database,task){
     
-    database[key][toDolist].push(task);
+    database[key]["toDoList"].push(task);
 }
 function removeArrayElement(array,value){
     var index = array.indexOf(value)
@@ -32,8 +47,9 @@ function removeArrayElement(array,value){
 function taskCompleted(key,database,task){
     removeArrayElement(database[key]["toDoList"],task)
 }
-function incrementApiCalls(key,database){
-    database[key]["apiCalls"]++;
+function incrementApiCalls(key,database,api){
+    database[key]["apiCalls"][api]++;
+    database[key]["apiCalls"]["totalApiCalls"]++;
 }
 module.exports ={
     database,
