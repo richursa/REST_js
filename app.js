@@ -1,15 +1,32 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+var usersDetails = {
+    "name"      : "tittu",
+    "apiCalls"  :  "0",
+    "toDoList"  :   ["sukham aano","ethokke und"]
+}
+
+var database = {};
+function addUser(key, usersDetails){
+    database[key] = usersDetails;
+}
+addUser("sampleKey",usersDetails);
+
 let app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.listen(3000,()=>{
     console.log("server ruunning on port 3000")
 });
-app.get("/url",(req,res,next)=>{
-    res.end("sukhamanode");
+app.get("/printTodo",(request,response,next)=>{
+    response.end("ellam working aane")
 });
-app.post("/key",(req,res)=>{
-    var key = req.body.key
-    console.log(key)
+app.post("/printTodo",(request ,response)=>{
+    if(database[request.body.key]){
+        response.end(database[request.body.key]["toDoList"].toString())
+
+    }
+    else{
+        response.end("no user with "+ request.body.key+ " found");
+    }
 });
