@@ -32,9 +32,13 @@ function removeArrayElement(array,value){
 function taskCompleted(key,database,task){
     removeArrayElement(database[key]["toDoList"],task)
 }
+function incrementApiCalls(key,database){
+    database[key]["apiCalls"]++;
+}
 module.exports ={
     database,
     addUser,
     addTask,
-    taskCompleted
+    taskCompleted,
+    incrementApiCalls
 }
