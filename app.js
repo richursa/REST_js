@@ -1,17 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-var usersDetails = {
-    "name"      : "tittu",
-    "apiCalls"  :  "0",
-    "toDoList"  :   ["sukham aano","ethokke und"]
-}
-
-var database = {};
-function addUser(key, usersDetails){
-    database[key] = usersDetails;
-}
-addUser("sampleKey",usersDetails);
-
 let app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
