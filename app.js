@@ -7,7 +7,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());                 //use body parser as a middleware to handle post requests
 
 app.listen(3000,()=>{                       //listen on port 3000 
-    console.log("server ruunning on port 3000")
+    console.log("server running on port 3000")
 });
 
 app.post("/getToDoList",(request ,response)=>{      //return to do list when api requests with a valid key
