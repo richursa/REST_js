@@ -21,8 +21,14 @@ app.post("/getToDoList",(request ,response)=>{
 });
 app.post("/addTask",(request , response)=>{
     if(user.database[request.body.key]){
+        try{
         user.addTask(request.body.key,user.database,request.body.task);
-        response.end("task " + request.body.task + " added");
+        response.send("task " + request.body.task + " added");
+        }
+        catch (err)
+        {
+            response.end("task already present");
+        }
         user.incrementApiCalls(request.body.key,user.database,"addTask");
     }
     else{
@@ -31,8 +37,13 @@ app.post("/addTask",(request , response)=>{
 });
 app.post("/taskCompleted",(request , response)=>{
     if(user.database[request.body.key]){
-        user.taskCompleted(request.body.key,user.database,request.body.completedTask);
-        response.end("task " + request.body.completedTask +" completed ");
+        try {
+        user.taskCompleted(request.body.key,user.database,request.body.taskCompleted);
+        request.end("task "+request.body.taskCompleted+" completed");
+        }
+        catch (err){
+            response.end(err.toString())
+        }
         user.incrementApiCalls(request.body.key,user.database,"taskCompleted");
     }
     else{
