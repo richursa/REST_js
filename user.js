@@ -77,7 +77,6 @@ function writeDatabase(jsonFile,database){              //write the database bac
 
 module.exports ={
     database,
-    addUser,
     addTask,
     taskCompleted,
     writeDatabase,
