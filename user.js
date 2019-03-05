@@ -1,5 +1,6 @@
 const fs = require('fs')                    //file system library for reading and writing into database file
-var database = require("./database.json")   //temporary database of user information
+const util = require('util')
+var database = require("./database/database.json")   //temporary database of user information
 
 function addTask(key,database,task){                    //add a task to the user with the specified key 
     if(database[key]["toDoList"].indexOf(task)!=-1){
@@ -36,9 +37,10 @@ setInterval(()=>{                                       //write to db to file ev
     //temporary hack 
     //TO-DO: learn mongoDb
 util.log("writing asynchronously to database")
-user.writeDatabase('database.json',user.database);
+writeDatabase('database.json',database);
 util.log("write completed")
 },10000)
+
 
 module.exports ={
     database,

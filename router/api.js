@@ -1,7 +1,6 @@
 const express = require('express')
 const user = require('../user')  
 const router = express.Router()
-const util = require('util')
 
 router.get("/getToDoList",(request ,response)=>{      //return to do list when api requests with a valid key
     if(user.database[request.get('To-Do-Key')]){      //api key is stored in http header To-Do-key to comply with http standards
@@ -61,12 +60,4 @@ response.end("no user with key '"+ request.get('To-Do-Key')+ "'  found");
 }
 });
 
-
-setInterval(()=>{                                       //write to db to file every 10 seconds 
-                                                        //temporary hack 
-                                                        //TO-DO: learn mongoDb
-    util.log("writing asynchronously to database")
-    user.writeDatabase('database.json',user.database);
-    util.log("write completed")
-},10000)
 module.exports = router

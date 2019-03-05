@@ -1,2 +1,2 @@
-let database = require('./database.json')
+let database = require('./database/database.json')
 console.log(database);
