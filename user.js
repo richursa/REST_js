@@ -1,47 +1,5 @@
 const fs = require('fs')                    //file system library for reading and writing into database file
 var database = require("./database.json")   //temporary database of user information
-/*
-
-function addUser(key, usersDetails){        //add a userDetailProperty to database object
-    database[key] = usersDetails;
-}
-
-var usersDetails = [{                     //one time code used for creating the database,json file
-    "name"      : "tittu",
-    "toDoList" : ["dance","run"],
-    "apiCalls"    : {
-        "getToDoList"   :0,
-        "addTask"       :0,
-        "taskCompleted" :0,
-        "totalApiCalls" :0
-    }
-    },
-{
-    "name"        : "richu",
-    "toDoList"    : [],
-    "apiCalls"    : {
-        "getToDoList"   :0,
-        "addTask"       :0,
-        "taskCompleted" :0,
-        "totalApiCalls" :0
-    }
-    },
-{
-    "name"        : "sachu",
-    "toDoList"    : [],
-    "apiCalls"    : {
-        "getToDolist"   :0,
-        "addTask"       :0,
-        "taskCompleted" :0,
-        "totalApiCalls" :0
-    }
-}];
-
-addUser("tittukey",usersDetails[0]);
-addUser("richukey",usersDetails[1]);
-addUser("sachukey",usersDetails[2]);
-
-*/
 
 function addTask(key,database,task){                    //add a task to the user with the specified key 
     if(database[key]["toDoList"].indexOf(task)!=-1){
@@ -74,6 +32,13 @@ function writeDatabase(jsonFile,database){              //write the database bac
     fs.writeFileSync(jsonFile,JSON.stringify(database),'utf8');
 }
 
+setInterval(()=>{                                       //write to db to file every 10 seconds 
+    //temporary hack 
+    //TO-DO: learn mongoDb
+util.log("writing asynchronously to database")
+user.writeDatabase('database.json',user.database);
+util.log("write completed")
+},10000)
 
 module.exports ={
     database,
