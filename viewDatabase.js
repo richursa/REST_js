@@ -1,2 +1,3 @@
-let database = require('./database/database.json')
+const database = require('./database/database.json');
+
 console.log(database);
