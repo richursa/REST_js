@@ -37,7 +37,7 @@ setInterval(()=>{                                       //write to db to file ev
     //temporary hack 
     //TO-DO: learn mongoDb
 util.log("writing asynchronously to database")
-writeDatabase('database.json',database);
+writeDatabase('./database/database.json',database);
 util.log("write completed")
 },10000)
 
