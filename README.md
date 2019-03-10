@@ -36,7 +36,8 @@ On terminal type
 to get the server running
 run  ```bash
                 node client.js --help 
-     ```
+     ```    
+     
 for a simple api test client
 
 
