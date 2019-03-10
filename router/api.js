@@ -22,7 +22,6 @@ router.post('/addTask', (request, response) => { // add task to the user mapped 
       response.end('task already present');
     }
     user.incrementApiCalls(request.get('To-Do-Key'), user.database, 'addTask');
-    console.log(user.database);
   } else {
     response.end(`no user with key '${request.get('To-Do-Key')}'  found`);
   }
