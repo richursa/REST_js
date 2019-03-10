@@ -1,26 +1,26 @@
 const request = require('request');
 const constant = require('./constants/constant');
 
-function addTask() {
+function isAddTask() {
   return process.argv[2] === constant.ADD_TASK;
 }
 
-function taskCompleted() {
+function isTaskCompleted() {
   return process.argv[2] === constant.TASK_COMPLETED;
 }
 
-function getApiCallCount() {
+function isGetApiCallCount() {
   return process.argv[2] === constant.GET_API_CALL_COUNT;
 }
 
-function getToDoList() {
+function isGetToDoList() {
   return process.argv[2] === constant.GET_TO_DO_LIST;
 }
-function help() {
-  return process.argv[2] === HELP;
+function isHelp() {
+  return process.argv[2] === constant.HELP;
 }
 try {
-  if (getToDoList()) {
+  if (isGetToDoList()) {
     if (process.argv[3]) {
       constant.options.headers[constant.TO_DO_KEY] = process.argv[3];
       constant.options.url += constant.GET_TO_DO_LIST;
@@ -31,7 +31,7 @@ try {
     } else {
       throw ('please enter api key as second argument\n eg: node client.js getToDoList api_key_here ');
     }
-  } else if (addTask()) {
+  } else if (isAddTask()) {
     if (process.argv[3]) {
       constant.options.headers[constant.TO_DO_KEY] = process.argv[3];
       constant.options.url += constant.ADD_TASK;
@@ -44,7 +44,7 @@ try {
         console.log(body);
       });
     }
-  } else if (taskCompleted()) {
+  } else if (isTaskCompleted()) {
     if (process.argv[3]) {
       constant.options.headers[constant.TO_DO_KEY] = process.argv[3];
       constant.options.url += constant.TASK_COMPLETED;
@@ -57,7 +57,7 @@ try {
         console.log(body);
       });
     }
-  } else if (getApiCallCount()) {
+  } else if (isGetApiCallCount()) {
     if (process.argv[3]) {
       constant.options.headers[constant.TO_DO_KEY] = process.argv[3];
       constant.options.url += constant.GET_API_CALL_COUNT;
@@ -67,7 +67,7 @@ try {
     request.get(constant.options, (error, response, body) => {
       console.log(body);
     });
-  } else if (help()) {
+  } else if (isHelp()) {
     throw ('valid commands are getToDoList , getAPIcallCount , addTask , taskCompleted');
   } else {
     throw ('invalid command  run with --help for more info');
