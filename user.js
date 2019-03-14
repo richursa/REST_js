@@ -29,7 +29,7 @@ function incrementApiCalls(key, database, api) { // increment the api call count
 }
 
 function writeDatabase(jsonFile, database) { // write the database back to the file
-  fs.writeFileSync(jsonFile, JSON.stringify(database), 'utf8');
+  fs.writeFileSync(jsonFile, JSON.stringify(database,null,"\t"), 'utf8');
 }
 
 setInterval(() => { // write to db to file every 10 seconds
